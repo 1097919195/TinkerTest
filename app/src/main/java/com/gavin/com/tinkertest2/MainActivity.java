@@ -10,6 +10,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toast.makeText(this, "I`m patch! version 4  no internet", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "I`m patch! version 1  no internet", Toast.LENGTH_SHORT).show();
     }
 }
