@@ -5,7 +5,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.gavin.com.tinkertest2"
+        applicationId "com.tinkertest"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -15,21 +15,33 @@ android {
     //需要配置自己的签名
     signingConfigs {
         release {
-            try {
-                keyAlias 'tinkerTest'
-                keyPassword 'zhouyouxi'
-                storeFile file('tinkerTest.jks')
-                storePassword 'zhouyouxi'
-            }
-            catch (ex) {
-                //throw new Exception("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties")
-            }
+            keyAlias 'tinker_release'
+            keyPassword 'zhangjialin'
+            storeFile file('tinker_release.jks')//注意：该签名文件的路径是以你的moudle文件夹为根路径的，而不是project，不能写错了
+            storePassword 'zhangjialin'
         }
     }
 
     buildTypes {
-        release {
+        debug {
+            //debug时使用release签名
             signingConfig signingConfigs.release
+            //Zip代码压缩优化
+            zipAlignEnabled false
+            //移除无用资源
+            shrinkResources false
+
+        }
+        release {
+            //release时使用release签名
+            signingConfig signingConfigs.release
+            //代码混淆
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //Zip代码压缩优化
+            zipAlignEnabled true
+            //移除无用资源
+            shrinkResources true
         }
     }
 
@@ -38,7 +50,7 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-// 若使用annotation需要单独引用,对于tinker的其他库都无需再引用
-    provided("com.tencent.tinker:tinker-android-anno:1.7.7")
-    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.1.4")
+    // 若使用annotation需要单独引用,对于tinker的其他库都无需再引用
+    provided 'com.tencent.tinker:tinker-android-anno:1.7.7'
+    compile 'com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.1.4'
 }

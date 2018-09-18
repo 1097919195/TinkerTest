@@ -4,7 +4,7 @@ apply plugin: 'tinkerpatch-support'
  * TODO: 请按自己的需求修改为适应自己工程的参数
  */
 def bakPath = file("${buildDir}/bakApk/")
-def baseInfo = "app-1.0.0-0918-10-04-24"// 注意！！！  改成对应的路径
+def baseInfo = "app-1.0.0-0918-15-33-06"// 注意！！！  改成对应的路径
 def variantName = "release"
 
 /**
@@ -26,8 +26,11 @@ tinkerpatchSupport {
     def pathPrefix = "${bakPath}/${baseInfo}/${variantName}/"
     def name = "${project.name}-${variantName}"
 
+    // 基础包文件路径（名字这里写死为old-app.apk。用于比较新旧app以生成补丁包，不管是debug还是release编译）
     baseApkFile = "${pathPrefix}/${name}.apk"
+    // 基础包的mapping.txt文件路径（用于辅助混淆补丁包的生成，一般在生成release版app时会使用到混淆，所以这个mapping.txt文件一般只是用于release安装包补丁的生成）
     baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
+    // 基础包的R.txt文件路径（如果你的安装包中资源文件有改动，则需要使用该R.txt文件来辅助生成补丁包）
     baseResourceRFile = "${pathPrefix}/${name}-R.txt"
     /**
      *  若有编译多flavors需求, 可以参照： https://github.com/TinkerPatch/tinkerpatch-flavors-sample

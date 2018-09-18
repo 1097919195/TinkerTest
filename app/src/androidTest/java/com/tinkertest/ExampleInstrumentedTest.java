@@ -1,4 +1,4 @@
-package com.gavin.com.tinkertest2;
+package com.tinkertest;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.gavin.com.tinkertest2", appContext.getPackageName());
+        assertEquals("com.tinkertest2", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.gavin.com.tinkertest2;
+package com.tinkertest;
 
 import org.junit.Test;
 

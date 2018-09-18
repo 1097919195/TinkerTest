@@ -1,4 +1,4 @@
-package com.gavin.com.tinkertest2;
+package com.tinkertest;
 
 import android.app.Application;
 import android.util.Log;
@@ -6,6 +6,8 @@ import android.util.Log;
 import com.tencent.tinker.loader.app.ApplicationLike;
 import com.tinkerpatch.sdk.TinkerPatch;
 import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike;
+
+import comtinkertest.BuildConfig;
 
 /**
  * Created by gavin

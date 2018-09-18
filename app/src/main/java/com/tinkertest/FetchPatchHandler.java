@@ -1,4 +1,4 @@
-package com.gavin.com.tinkertest2;
+package com.tinkertest;
 
 import android.os.Handler;
 import android.os.Message;
