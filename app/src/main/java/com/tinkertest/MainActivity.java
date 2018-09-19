@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.tencent.tinker.lib.tinker.Tinker;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
+import com.tinkerpatch.sdk.TinkerPatch;
 
 import java.io.File;
 
@@ -36,11 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void loadPatch(View view) {
-        if (Tinker.isTinkerInstalled()) {//是否已经安装过
-            TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), getPatchName());
-        }else {
-            Toast.makeText(this, "暂时不需要修复", Toast.LENGTH_SHORT).show();
-        }
+        TinkerPatch.with().fetchPatchUpdate(true);
     }
 
     public String getPatchName() {
